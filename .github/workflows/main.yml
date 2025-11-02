@@ -13,8 +13,11 @@ jobs:
       - name: Node version
         run: node --version
 
-      - name: Instalando dependências
-        run: npm install
+      - name: Instalar dependências
+        run: npm ci
 
-      - name: Executando os tests
+      - name: Verificar Cypress
+        run: npx cypress verify
+
+      - name: Executar testes
         run: npx cypress run
