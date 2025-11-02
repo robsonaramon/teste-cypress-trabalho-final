@@ -1,17 +1,23 @@
-{
-  "name": "cypress",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@faker-js/faker": "^10.1.0",
-    "cypress": "^15.3.0",
-    "cypress-mochawesome-reporter": "^4.0.2"
-  }
-}
+name: Web E2E Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node version
+        run: node --version
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar Cypress
+        run: npx cypress verify
+
+      - name: Executar testes
+        run: npx cypress run
