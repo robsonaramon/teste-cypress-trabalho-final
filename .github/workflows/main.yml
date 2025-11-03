@@ -23,10 +23,10 @@ jobs:
         run: npx cypress run
 
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}  
         with: 
-          if: ${{ !cancelled() }}
-          name: Relatórios
-          path: |
-            cypress/reports
-            cypress/screenshots
-            cypress/videos
+            name: Relatórios
+            path: |
+              cypress/reports
+              cypress/screenshots
+              cypress/videos
